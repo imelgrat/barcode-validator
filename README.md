@@ -36,7 +36,7 @@ be found over at [Packagist](http://packagist.org).
 
 ### Manually
 
-1.  Copy `src/CodeValidator.php` to your codebase, perhaps to the `vendor`
+1.  Copy `src/code-validator.php` to your codebase, perhaps to the `vendor`
     directory.
 2.  Add the `CodeValidator` class to your autoloader or `require` the file
     directly.
