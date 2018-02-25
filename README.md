@@ -2,8 +2,14 @@ CodeValidator
 ==================
 
 [![License](https://poser.pugx.org/imelgrat/code-validator/license)](https://packagist.org/packages/imelgrat/code-validator)
-[![Latest Stable Version](https://poser.pugx.org/imelgrat/freegoip/v/stable)](https://packagist.org/packages/imelgrat/freegoip)
+[![Latest Stable Version](https://poser.pugx.org/imelgrat/code-validator/v/stable)](https://packagist.org/packages/imelgrat/code-validator)
 [![Total Downloads](https://poser.pugx.org/imelgrat/code-validator/downloads)](https://packagist.org/packages/imelgrat/code-validator)
+
+[![GitHub license](https://img.shields.io/github/license/imelgrat/code-validator.svg?style=flat-square)](https://github.com/imelgrat/code-validator/blob/master/LICENSE)
+[![GitHub release](https://img.shields.io/github/release/imelgrat/code-validator.svg?style=flat-square)](https://github.com/imelgrat/code-validator/releases)
+[![Total Downloads](https://poser.pugx.org/imelgrat/code-validator/downloads)](https://packagist.org/packages/imelgrat/code-validator)
+[![GitHub issues](https://img.shields.io/github/issues/imelgrat/code-validator.svg?style=flat-square)](https://github.com/imelgrat/code-validator/issues)
+[![GitHub stars](https://img.shields.io/github/stars/imelgrat/code-validator.svg?style=flat-square)](https://github.com/imelgrat/code-validator/stargazers)
 
 A PHP class for validating EAN, IMEI, ISBN, GTIN, SSCC, GSIN, UPC and other similar codes.
 
