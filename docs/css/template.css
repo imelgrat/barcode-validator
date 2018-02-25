@@ -219,6 +219,23 @@ h3.public:before {
     width:       1.2em;
 }
 
+h3 span.static::before {
+	font-family: FontAwesome;
+	content: "\f02e";
+	color: #3a87ad;
+	display: inline-block;
+	width: 1.2em;
+	font-weight: 800;
+}
+h3 span.instance::before {
+	font-family: FontAwesome;
+	content: "\f1f3";
+	color: transparent;
+	display: inline-block;
+	width: 1.2em;
+	font-weight: 800;
+}
+
 .class #summary section .span4:first-of-type,
 .class #summary section .span6:first-of-type {
     padding-left: 21px;

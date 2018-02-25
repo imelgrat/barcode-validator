@@ -85,7 +85,7 @@
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                 <i class="icon-ellipsis-vertical"></i>
             </a>
-            <a  href="../index.html">CodeValidator</a>
+            <a class="brand" href="../index.html">CodeValidator</a>
             <div class="nav-collapse">
                 <ul class="nav pull-right">
                                         <li class="dropdown" id="charts-menu">
@@ -137,10 +137,10 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1010009575"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1495714756"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-1010009575" class="accordion-body collapse in">
+            <div id="namespace-1495714756" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                     
@@ -275,15 +275,7 @@
                                 license
                             </th>
                             <td>
-                                                                    <p><a href="https://github.com//imelgrat/code-validator/blob/master/LICENSE">https://github.com//imelgrat/code-validator/blob/master/LICENSE</a></p>
-                                                            </td>
-                        </tr>
-                                            <tr>
-                            <th>
-                                version
-                            </th>
-                            <td>
-                                                                    <p>v1.1.0 stable</p>
+                                                                    <p><a href="https://github.com/imelgrat/code-validator/blob/master/LICENSE">https://github.com/imelgrat/code-validator/blob/master/LICENSE</a></p>
                                                             </td>
                         </tr>
                                         </table>
@@ -302,7 +294,7 @@
         <div class="span8 content class">
             <a id="method___construct" name="method___construct" class="anchor"></a>
             <article class="method">
-                <h3 class="public ">__construct()</h3>
+                <h3 class="public "><span class="instance"></span>__construct()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">__construct() : \CodeValidator</pre>
                 <p><em>Constructor.</em></p>
@@ -330,7 +322,7 @@
         <div class="span8 content class">
             <a id="method_IsValidISBN" name="method_IsValidISBN" class="anchor"></a>
             <article class="method">
-                <h3 class="public ">IsValidISBN()</h3>
+                <h3 class="public "><span class="static"></span>IsValidISBN()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">IsValidISBN(string  <span class="argument">$code = &#039;&#039;</span>) : boolean</pre>
                 <p><em>Determine whether an ISBN code is valid (either ISBN 10 or 13 digits). It also validates whether the code has the right length.</em></p>
@@ -371,7 +363,7 @@ For ISBN-13 the check-digit is calculated using the <a href="../classes/CodeVali
         <div class="span8 content class">
             <a id="method_IsValidEAN8" name="method_IsValidEAN8" class="anchor"></a>
             <article class="method">
-                <h3 class="public ">IsValidEAN8()</h3>
+                <h3 class="public "><span class="static"></span>IsValidEAN8()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">IsValidEAN8(string  <span class="argument">$code = &#039;&#039;</span>) : boolean</pre>
                 <p><em>Determine whether a EAN-8 (GTIN-8) code is valid</em></p>
@@ -418,15 +410,15 @@ For ISBN-13 the check-digit is calculated using the <a href="../classes/CodeVali
         <div class="span8 content class">
             <a id="method_IsValidEAN13" name="method_IsValidEAN13" class="anchor"></a>
             <article class="method">
-                <h3 class="public ">IsValidEAN13()</h3>
+                <h3 class="public "><span class="static"></span>IsValidEAN13()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">IsValidEAN13(string  <span class="argument">$code = &#039;&#039;</span>) : boolean</pre>
                 <p><em>Determine whether a EAN-13 (GTIN-13) code is valid</em></p>
                 <p>The EAN barcode is primarily used in supermarkets to identify product at the point of sales. The products contain the EAN number or GTIN (Global Trade Item Number) to identify itself.</p>
 <p>An EAN-13 always has 13 digits:</p>
 <ol>
-<li><strong>GS1 Prefix</strong>: The first 3 digits - usually identifying the national <a href="http://www.gs1.org/">GS1</a> Member Organization to which the manufacturer is registered (not necessarily where the product is actually made). The GS1 Prefix is 978 or 979, when the EAN-13 symbol encodes a conversion of an International Standard Book Number (ISBN).
-Likewise the prefix is 979 for International Standard Music Number (ISMN) and 977 for International Standard Serial Number (ISSN).</li>
+<li><strong>GS1 Prefix</strong>: The first 3 digits - usually identifying the national <a href="http://www.gs1.org/">GS1</a> Member Organization to which the manufacturer is registered (not necessarily where the product is actually made). The GS1 Prefix is equal to 978 when the EAN-13 symbol encodes a conversion of an International Standard Book Number (ISBN).
+Likewise the prefix is equal to 979 for International Standard Music Number (ISMN) and 977 for International Standard Serial Number (ISSN).</li>
 <li><strong>Manufacturer Code</strong>: The manufacturer code is a unique code assigned to each manufacturer by the numbering authority indicated by the GS1 Prefix. All products produced by a given company will use the same manufacturer code.</li>
 <li><strong>Product Code</strong>: The product code is assigned by the manufacturer. The product code immediately follows manufacturer code. The total length of manufacturer code plus product code should be 9 or 10 digits depending on the length of country code(2-3 digits).</li>
 <li><strong>Check digit</strong>: The check digit is an additional digit, used to verify that a barcode has been entered correctly.</li>
@@ -465,7 +457,7 @@ Likewise the prefix is 979 for International Standard Music Number (ISMN) and 97
         <div class="span8 content class">
             <a id="method_IsValidEAN14" name="method_IsValidEAN14" class="anchor"></a>
             <article class="method">
-                <h3 class="public ">IsValidEAN14()</h3>
+                <h3 class="public "><span class="static"></span>IsValidEAN14()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">IsValidEAN14(string  <span class="argument">$code = &#039;&#039;</span>) : boolean</pre>
                 <p><em>Determine whether a EAN-14 code is valid</em></p>
@@ -510,7 +502,7 @@ Likewise the prefix is 979 for International Standard Music Number (ISMN) and 97
         <div class="span8 content class">
             <a id="method_IsValidUPCA" name="method_IsValidUPCA" class="anchor"></a>
             <article class="method">
-                <h3 class="public ">IsValidUPCA()</h3>
+                <h3 class="public "><span class="static"></span>IsValidUPCA()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">IsValidUPCA(string  <span class="argument">$code = &#039;&#039;</span>) : boolean</pre>
                 <p><em>Determine whether a UPC-A code is valid</em></p>
@@ -568,7 +560,7 @@ Likewise the prefix is 979 for International Standard Music Number (ISMN) and 97
         <div class="span8 content class">
             <a id="method_IsValidUPCE" name="method_IsValidUPCE" class="anchor"></a>
             <article class="method">
-                <h3 class="public ">IsValidUPCE()</h3>
+                <h3 class="public "><span class="static"></span>IsValidUPCE()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">IsValidUPCE(string  <span class="argument">$code = &#039;&#039;</span>) : boolean</pre>
                 <p><em>Determine whether a UPC-E code is valid</em></p>
@@ -622,7 +614,7 @@ The UPC code is a numeric code which is able to display digits from 0-9.</p>
         <div class="span8 content class">
             <a id="method_IsValidGSIN" name="method_IsValidGSIN" class="anchor"></a>
             <article class="method">
-                <h3 class="public ">IsValidGSIN()</h3>
+                <h3 class="public "><span class="static"></span>IsValidGSIN()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">IsValidGSIN(string  <span class="argument">$code = &#039;&#039;</span>) : boolean</pre>
                 <p><em>Determine whether a GSIN code is valid.</em></p>
@@ -668,7 +660,7 @@ The UPC code is a numeric code which is able to display digits from 0-9.</p>
         <div class="span8 content class">
             <a id="method_IsValidSSCC" name="method_IsValidSSCC" class="anchor"></a>
             <article class="method">
-                <h3 class="public ">IsValidSSCC()</h3>
+                <h3 class="public "><span class="static"></span>IsValidSSCC()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">IsValidSSCC(string  <span class="argument">$code = &#039;&#039;</span>) : boolean</pre>
                 <p><em>Determine whether a SSCC code is valid.</em></p>
@@ -715,7 +707,7 @@ The UPC code is a numeric code which is able to display digits from 0-9.</p>
         <div class="span8 content class">
             <a id="method_IsValidGLN" name="method_IsValidGLN" class="anchor"></a>
             <article class="method">
-                <h3 class="public ">IsValidGLN()</h3>
+                <h3 class="public "><span class="static"></span>IsValidGLN()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">IsValidGLN(string  <span class="argument">$code = &#039;&#039;</span>) : boolean</pre>
                 <p><em>Determine whether a GLN code is valid</em></p>
@@ -755,7 +747,7 @@ The UPC code is a numeric code which is able to display digits from 0-9.</p>
         <div class="span8 content class">
             <a id="method_IsValidIMEI" name="method_IsValidIMEI" class="anchor"></a>
             <article class="method">
-                <h3 class="public ">IsValidIMEI()</h3>
+                <h3 class="public "><span class="static"></span>IsValidIMEI()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">IsValidIMEI(string  <span class="argument">$code = &#039;&#039;</span>) : boolean</pre>
                 <p><em>Determine whether an IMEI number is valid or IMEISV</em></p>
@@ -797,7 +789,7 @@ The UPC code is a numeric code which is able to display digits from 0-9.</p>
         <div class="span8 content class">
             <a id="method_calculateEANCheckDigit" name="method_calculateEANCheckDigit" class="anchor"></a>
             <article class="method">
-                <h3 class="protected ">calculateEANCheckDigit()</h3>
+                <h3 class="protected "><span class="static"></span>calculateEANCheckDigit()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">calculateEANCheckDigit(string  <span class="argument">$code</span>) : integer</pre>
                 <p><em>Calculate a check digit using the Modulo-10 algorithm used for EAN/UPC/GTIN codes.</em></p>
@@ -837,7 +829,7 @@ The UPC code is a numeric code which is able to display digits from 0-9.</p>
         <div class="span8 content class">
             <a id="method_validateEANCheckDigit" name="method_validateEANCheckDigit" class="anchor"></a>
             <article class="method">
-                <h3 class="protected ">validateEANCheckDigit()</h3>
+                <h3 class="protected "><span class="static"></span>validateEANCheckDigit()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">validateEANCheckDigit(string  <span class="argument">$code</span>, integer  <span class="argument">$length</span>) : boolean</pre>
                 <p><em>Determine whether a code is valid using the check-digit algorithm. It also validates whether the code has the right length and that it&#039;s composed of only digits.</em></p>
@@ -882,7 +874,7 @@ The UPC code is a numeric code which is able to display digits from 0-9.</p>
         <div class="span8 content class">
             <a id="method_sumAllDigits" name="method_sumAllDigits" class="anchor"></a>
             <article class="method">
-                <h3 class="protected ">sumAllDigits()</h3>
+                <h3 class="protected "><span class="static"></span>sumAllDigits()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">sumAllDigits(integer  <span class="argument">$number</span>, integer  <span class="argument">$index</span>) : array</pre>
                 <p><em>Replace a number by the sum of all its digits.</em></p>
@@ -924,7 +916,7 @@ The UPC code is a numeric code which is able to display digits from 0-9.</p>
         <div class="span8 content class">
             <a id="method_calculateLuhnCheckDigit" name="method_calculateLuhnCheckDigit" class="anchor"></a>
             <article class="method">
-                <h3 class="protected ">calculateLuhnCheckDigit()</h3>
+                <h3 class="protected "><span class="static"></span>calculateLuhnCheckDigit()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">calculateLuhnCheckDigit(string  <span class="argument">$code</span>) : integer</pre>
                 <p><em>Calculate a check digit using the Luhn Modulo-10 algorithm used for IMEI, Credit Card validation and others.</em></p>
@@ -1033,7 +1025,7 @@ The UPC code is a numeric code which is able to display digits from 0-9.</p>
         <div class="span8 content class">
             <a id="method_validateLuhnCheckDigit" name="method_validateLuhnCheckDigit" class="anchor"></a>
             <article class="method">
-                <h3 class="protected ">validateLuhnCheckDigit()</h3>
+                <h3 class="protected "><span class="static"></span>validateLuhnCheckDigit()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">validateLuhnCheckDigit(string  <span class="argument">$code</span>, integer  <span class="argument">$length</span>) : boolean</pre>
                 <p><em>Determine whether a code is valid using the Luhn algorithm. It also validates whether the code has the right length and that it&#039;s composed of only digits.</em></p>
@@ -1077,7 +1069,7 @@ The UPC code is a numeric code which is able to display digits from 0-9.</p>
         <div class="span8 content class">
             <a id="method_calculateISBNCheckDigit" name="method_calculateISBNCheckDigit" class="anchor"></a>
             <article class="method">
-                <h3 class="protected ">calculateISBNCheckDigit()</h3>
+                <h3 class="protected "><span class="static"></span>calculateISBNCheckDigit()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">calculateISBNCheckDigit(string  <span class="argument">$code</span>) : mixed</pre>
                 <p><em>Calculate a check digit using the ISBN algorithm. The ISBN is error-detecting, but not error-correcting (unless it is known that only a single digit is erroneous). The ISBN detects any single-digit error, as well as most two-digit error resulting from transposing two digits.</em></p>
@@ -1167,11 +1159,11 @@ The UPC code is a numeric code which is able to display digits from 0-9.</p>
         <div class="span8 content class">
             <a id="method_validateISBNCheckDigit" name="method_validateISBNCheckDigit" class="anchor"></a>
             <article class="method">
-                <h3 class="protected ">validateISBNCheckDigit()</h3>
+                <h3 class="protected "><span class="static"></span>validateISBNCheckDigit()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">validateISBNCheckDigit(string  <span class="argument">$code</span>, integer  <span class="argument">$length = 13</span>) : boolean</pre>
-                <p><em>Determine whether a code is valid using the ISBN algorithm (either ISBN 10 or 13 digits). It also validates whether the code has the right length.</em></p>
-                <p>For ISBN-10 each of the first nine digits of the ten-digit ISBN (excluding the check digit itself) is multiplied by a number in a sequence from 10 to 2 and the remainder of the sum with (respect to 11) is computed. The resulting remainder, plus the check digit, must equal a multiple of 11 (either 0 or 11). For ISBN-13 the check-digit is calculated using the <a href="../classes/CodeValidator.html#method_calculateEANCheckDigit">CodeValidator::calculateEANCheckDigit()</a> function, making it compatible with EAN codes.</p>
+                <pre class="signature" style="margin-right: 54px;">validateISBNCheckDigit(string  <span class="argument">$code</span>) : boolean</pre>
+                <p><em>Determine whether a code is valid using the ISBN algorithm (either ISBN 10). It also validates whether the code has the right length.</em></p>
+                <p>For ISBN-10 each of the first nine digits of the ten-digit ISBN (excluding the check digit itself) is multiplied by a number in a sequence from 10 to 2 and the remainder of the sum with (respect to 11) is computed. The resulting remainder, plus the check digit, must equal a multiple of 11 (either 0 or 11).</p>
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
@@ -1179,11 +1171,6 @@ The UPC code is a numeric code which is able to display digits from 0-9.</p>
                                 <td>string</td>
                                 <td>$code </td>
                                 <td><p>the code to validate</p></td>
-                            </tr>
-                                                    <tr>
-                                <td>integer</td>
-                                <td>$length </td>
-                                <td><p>The length of the ISBN code to validate (either 10 or 13 digits)</p></td>
                             </tr>
                                             </table>
                 
@@ -1247,8 +1234,7 @@ The UPC code is a numeric code which is able to display digits from 0-9.</p>
             <section class="row-fluid">
                 <section class="span10 offset1">
                     <hr />
-                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored  by <a target="_blank" href="https://imelgrat.me">Iv&aacute;n Melgrati</a> 
-                    on February 25th, 2018 at 04:37.
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored  by <a target="_blank" href="https://imelgrat.me">Iv&aacute;n Melgrati</a> on February 25th, 2018 at 16:44.
                 </section>
             </section>
         </section>

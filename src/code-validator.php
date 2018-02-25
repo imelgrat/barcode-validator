@@ -5,7 +5,7 @@
 	 *
 	 * @package CodeValidator
 	 * @author    Ivan Melgrati
-	 * @version   v1.1.0 stable 
+	 * @version   v1.1.1 
 	 */
 
 	if (!class_exists('CodeValidator'))
@@ -16,8 +16,7 @@
 		 * @author    Ivan Melgrati
 		 * @copyright Copyright 2018 by Ivan Melgrati
 		 * @link      
-		 * @license   https://github.com//imelgrat/code-validator/blob/master/LICENSE
-		 * @version   v1.1.0 stable 
+		 * @license   https://github.com/imelgrat/code-validator/blob/master/LICENSE
 		 */
 		class CodeValidator
 		{
@@ -32,7 +31,7 @@
 
 			/**
 			 * Calculate a check digit using the Modulo-10 algorithm used for EAN/UPC/GTIN codes.
-			 * 
+			 *
 			 * @link https://en.wikipedia.org/wiki/Check_digit
 			 * @link http://www.gs1.org/how-calculate-check-digit-manually
 			 * @param  string $code the code to calculate the check digit for
@@ -228,19 +227,18 @@
 			}
 
 			/**
-			 * Determine whether a code is valid using the ISBN algorithm (either ISBN 10 or 13 digits). It also validates whether the code has the right length.
+			 * Determine whether a code is valid using the ISBN algorithm (either ISBN 10). It also validates whether the code has the right length.
 			 * 
-			 * For ISBN-10 each of the first nine digits of the ten-digit ISBN (excluding the check digit itself) is multiplied by a number in a sequence from 10 to 2 and the remainder of the sum with (respect to 11) is computed. The resulting remainder, plus the check digit, must equal a multiple of 11 (either 0 or 11). For ISBN-13 the check-digit is calculated using the {@link CodeValidator::calculateEANCheckDigit()} function, making it compatible with EAN codes.
+			 * For ISBN-10 each of the first nine digits of the ten-digit ISBN (excluding the check digit itself) is multiplied by a number in a sequence from 10 to 2 and the remainder of the sum with (respect to 11) is computed. The resulting remainder, plus the check digit, must equal a multiple of 11 (either 0 or 11). 
 			 * 
 			 * @link https://en.wikipedia.org/wiki/International_Standard_Book_Number
 			 * @param  string $code the code to validate
-			 * @param  int $length The length of the ISBN code to validate (either 10 or 13 digits)
 			 * @return bool 
 			 */
-			protected static function validateISBNCheckDigit($code, $length = 13)
+			protected static function validateISBNCheckDigit($code)
 			{
 				// Check if the string length matches the code's desired length and contains only digits (after removing hyphens)
-                if (strlen($code) == $length && preg_match('/^[0-9]+$/', $code))
+                if (strlen($code) == 10 && preg_match('/^[0-9]+$/', $code))
 				{
 					if (CodeValidator::calculateISBNCheckDigit(substr($code, 0, -1)) == substr($code, -1, 1))
 					{
@@ -314,8 +312,8 @@
 			 * 
 			 * An EAN-13 always has 13 digits:
 			 * 
-			 * 1. **GS1 Prefix**: The first 3 digits - usually identifying the national [GS1](http://www.gs1.org/) Member Organization to which the manufacturer is registered (not necessarily where the product is actually made). The GS1 Prefix is 978 or 979, when the EAN-13 symbol encodes a conversion of an International Standard Book Number (ISBN). 
-			 * Likewise the prefix is 979 for International Standard Music Number (ISMN) and 977 for International Standard Serial Number (ISSN).
+			 * 1. **GS1 Prefix**: The first 3 digits - usually identifying the national [GS1](http://www.gs1.org/) Member Organization to which the manufacturer is registered (not necessarily where the product is actually made). The GS1 Prefix is equal to 978 when the EAN-13 symbol encodes a conversion of an International Standard Book Number (ISBN). 
+			 * Likewise the prefix is equal to 979 for International Standard Music Number (ISMN) and 977 for International Standard Serial Number (ISSN).
 			 * 2. **Manufacturer Code**: The manufacturer code is a unique code assigned to each manufacturer by the numbering authority indicated by the GS1 Prefix. All products produced by a given company will use the same manufacturer code.
 			 * 3. **Product Code**: The product code is assigned by the manufacturer. The product code immediately follows manufacturer code. The total length of manufacturer code plus product code should be 9 or 10 digits depending on the length of country code(2-3 digits).
 			 * 4. **Check digit**: The check digit is an additional digit, used to verify that a barcode has been entered correctly. 
