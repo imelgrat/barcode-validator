@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>Documentation for CodeValidator</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+        <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+    <link rel="apple-touch-icon" sizes="192x192" href="../images/apple-touch-icon-192x192.png"/>
+	<link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png"/>
+	<link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png"/>
+	<link rel="mask-icon" href="../safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="msapplication-TileColor" content="#00aba9">
+	<meta name="theme-color" content="#ffffff">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a  href="../index.html">CodeValidator</a>
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-444906373"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-444906373" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/CodeValidator.html">CodeValidator</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>CodeValidator</h1>
+                    <p><em>A PHP class for validating EAN, IMEI, ISBN, GTIN, SSCC, GSIN, UPC and other similar codes.</em></p>
+                    
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/CodeValidator.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/CodeValidator.html#method_IsValidEAN8" class="">IsValidEAN8()</a><br />
+                                                                    <a href="../classes/CodeValidator.html#method_IsValidEAN13" class="">IsValidEAN13()</a><br />
+                                                                    <a href="../classes/CodeValidator.html#method_IsValidEAN14" class="">IsValidEAN14()</a><br />
+                                                                    <a href="../classes/CodeValidator.html#method_IsValidUPCA" class="">IsValidUPCA()</a><br />
+                                                                    <a href="../classes/CodeValidator.html#method_IsValidUPCE" class="">IsValidUPCE()</a><br />
+                                                                    <a href="../classes/CodeValidator.html#method_IsValidGSIN" class="">IsValidGSIN()</a><br />
+                                                                    <a href="../classes/CodeValidator.html#method_IsValidSSCC" class="">IsValidSSCC()</a><br />
+                                                                    <a href="../classes/CodeValidator.html#method_IsValidGLN" class="">IsValidGLN()</a><br />
+                                                                    <a href="../classes/CodeValidator.html#method_IsValidIMEI" class="">IsValidIMEI()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/CodeValidator.html#method_calculateEANCheckDigit" class="">calculateEANCheckDigit()</a><br />
+                                                                    <a href="../classes/CodeValidator.html#method_validateEANCheckDigit" class="">validateEANCheckDigit()</a><br />
+                                                                    <a href="../classes/CodeValidator.html#method_sumAllDigits" class="">sumAllDigits()</a><br />
+                                                                    <a href="../classes/CodeValidator.html#method_calculateLuhnCheckDigit" class="">calculateLuhnCheckDigit()</a><br />
+                                                                    <a href="../classes/CodeValidator.html#method_validateLuhnCheckDigit" class="">validateLuhnCheckDigit()</a><br />
+                                                                    <a href="../classes/CodeValidator.html#method_calculateISBNCheckDigit" class="">calculateISBNCheckDigit()</a><br />
+                                                                    <a href="../classes/CodeValidator.html#method_validateISBNCheckDigit" class="">validateISBNCheckDigit()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No protected properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/code-validator.html"><div class="path-wrapper">code-validator.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">CodeValidator</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\CodeValidator</div>
+                            </dd>
+
+                        
+                        
+                        
+                                                                            <dt>See also</dt>
+                                                                                    <dd><a href=""><div class="namespace-wrapper"></div></a></dd>
+                                                    
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>Ivan Melgrati</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                copyright
+                            </th>
+                            <td>
+                                                                    <p>Copyright 2018 by Ivan Melgrati</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                license
+                            </th>
+                            <td>
+                                                                    <p><a href="https://github.com/imelgrat/CodeValidator/blob/master/LICENSE">https://github.com/imelgrat/CodeValidator/blob/master/LICENSE</a></p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                version
+                            </th>
+                            <td>
+                                                                    <p>v1.1.0 stable</p>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                        
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct() : \CodeValidator</pre>
+                <p><em>Constructor.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CodeValidator.html">\CodeValidator</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_IsValidEAN8" name="method_IsValidEAN8" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">IsValidEAN8()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">IsValidEAN8(string  <span class="argument">$code = &#039;&#039;</span>) : boolean</pre>
+                <p><em>Determine whether a EAN-8 (GTIN-8) code is valid</em></p>
+                <p>EAN 8 is the short form of EAN-13. This code is only used if the article is too small for an EAN-13 code.</p>
+<p>EAN-8 codes are common throughout the world, and companies may also use them to encode RCN-8s (8-digit Restricted Circulation Numbers) used to identify own-brand products sold only in their stores. These are formatted as 02xx xxxx, 04xx xxxx or 2xxx xxxx.</p>
+<p>An EAN-8 always has 8 digits:</p>
+<ol>
+<li><strong>Manufacturer Code</strong>: 2- or 3-digit <a href="http://www.gs1.org/">GS1</a> prefix (which is assigned to each national GS1 authority)</li>
+<li><strong>Product Code</strong>: 5- or 4-digit item reference element depending on the length of the GS1 prefix)</li>
+<li><strong>Check digit</strong>: The check digit is an additional digit, used to verify that a barcode has been entered correctly.</li>
+</ol>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$code </td>
+                                <td><p>the code to validate</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://en.wikipedia.org/wiki/EAN-8"><span class="namespace-wrapper">https://en.wikipedia.org/wiki/EAN-8</span></a></dd>
+                                            <dd><a href="https://en.wikipedia.org/wiki/International_Article_Number"><span class="namespace-wrapper">https://en.wikipedia.org/wiki/International_Article_Number</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_IsValidEAN13" name="method_IsValidEAN13" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">IsValidEAN13()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">IsValidEAN13(string  <span class="argument">$code = &#039;&#039;</span>) : boolean</pre>
+                <p><em>Determine whether a EAN-13 (GTIN-13) code is valid</em></p>
+                <p>The EAN barcode is primarily used in supermarkets to identify product at the point of sales. The products contain the EAN number or GTIN (Global Trade Item Number) to identify itself.</p>
+<p>An EAN-13 always has 13 digits:</p>
+<ol>
+<li><strong>GS1 Prefix</strong>: The first 3 digits - usually identifying the national <a href="http://www.gs1.org/">GS1</a> Member Organization to which the manufacturer is registered (not necessarily where the product is actually made). The GS1 Prefix is 978 or 979, when the EAN-13 symbol encodes a conversion of an International Standard Book Number (ISBN).
+Likewise the prefix is 979 for International Standard Music Number (ISMN) and 977 for International Standard Serial Number (ISSN).</li>
+<li><strong>Manufacturer Code</strong>: The manufacturer code is a unique code assigned to each manufacturer by the numbering authority indicated by the GS1 Prefix. All products produced by a given company will use the same manufacturer code.</li>
+<li><strong>Product Code</strong>: The product code is assigned by the manufacturer. The product code immediately follows manufacturer code. The total length of manufacturer code plus product code should be 9 or 10 digits depending on the length of country code(2-3 digits).</li>
+<li><strong>Check digit</strong>: The check digit is an additional digit, used to verify that a barcode has been entered correctly.</li>
+</ol>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$code </td>
+                                <td><p>the code to validate</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://en.wikipedia.org/wiki/International_Article_Number"><span class="namespace-wrapper">https://en.wikipedia.org/wiki/International_Article_Number</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_IsValidEAN14" name="method_IsValidEAN14" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">IsValidEAN14()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">IsValidEAN14(string  <span class="argument">$code = &#039;&#039;</span>) : boolean</pre>
+                <p><em>Determine whether a EAN-14 code is valid</em></p>
+                <p>The EAN 14 code is used for traded goods.</p>
+<p>An EAN-14 always has 14 digits:</p>
+<ol>
+<li><strong>Application Identifier</strong>: The first two numbers are the Application Identifier of the EAN-128: (01). You cannot change them. The first digit is the &quot;Logistic Variant&quot;, also named as &quot;Packaging indicator&quot;.</li>
+<li><strong>Product number</strong>: The next 12 digits are representing the product number. Generally this is the EAN-13 number without the check digit.</li>
+<li><strong>Check digit</strong>: The check digit is an additional digit, used to verify that the code has been entered correctly.</li>
+</ol>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$code </td>
+                                <td><p>the code to validate</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://en.wikipedia.org/wiki/International_Article_Number"><span class="namespace-wrapper">https://en.wikipedia.org/wiki/International_Article_Number</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_IsValidUPCA" name="method_IsValidUPCA" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">IsValidUPCA()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">IsValidUPCA(string  <span class="argument">$code = &#039;&#039;</span>) : boolean</pre>
+                <p><em>Determine whether a UPC-A code is valid</em></p>
+                <p>The UPC-A code is the standard version of the <a href="https://en.wikipedia.org/wiki/Universal_Product_Code">UPC</a> code and has 12 digits.  The UPC code is a numeric code which is able to display digits from 0-9. It is also called UPC-12 and is very similar to the EAN code.</p>
+<p>The structure of the UPC-A code is as follows:</p>
+<ol>
+<li><strong>Type of content</strong>: The first digit of the UPC-A code says what the code contains:
+<ul>
+<li>0: normal UPC Code</li>
+<li>1: reserved</li>
+<li>2: articles where the price varies by the weight: for example meat. The code is produced in the store and attached to the article.</li>
+<li>3: National Drug Code (NDC) and National Health Related Items Code (HRI).</li>
+<li>4: UPC Code which can be used without format limits</li>
+<li>5: coupon</li>
+<li>6: normal UPC Code</li>
+<li>7: normal UPC Code</li>
+<li>8: reserved</li>
+<li>9: reserved</li>
+</ul></li>
+<li><strong>UPC ID number</strong>: The next 5 digits show the producer of the article (UPC ID number). This number is issued by the Uniform Code Council (UUC)</li>
+<li><strong>Article number</strong>: The seventh to eleventh digits show the individual article number issued by the producer.</li>
+<li><strong>Check digit</strong>: The check digit is an additional digit, used to verify that the code has been entered correctly.</li>
+</ol>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$code </td>
+                                <td><p>the code to validate</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://en.wikipedia.org/wiki/Universal_Product_Code"><span class="namespace-wrapper">https://en.wikipedia.org/wiki/Universal_Product_Code</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_IsValidUPCE" name="method_IsValidUPCE" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">IsValidUPCE()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">IsValidUPCE(string  <span class="argument">$code = &#039;&#039;</span>) : boolean</pre>
+                <p><em>Determine whether a UPC-E code is valid</em></p>
+                <p>The UPC-E code is a short, 8-digit version of the UPC-A code, always starting with a zero. It is often used for small retail items.
+The UPC code is a numeric code which is able to display digits from 0-9.</p>
+<p>The structure of the full-length UPC-E code is as follows:</p>
+<ol>
+<li><strong>Number system digit</strong>: Always zero. Might be missing in fully-compressed code version (6-digits).</li>
+<li><strong>Compressed-form manufacturer/product number</strong> It is created by suppressing trailing zeros in the manufacturers code and leading zeros in the product identification part of the bar code message.
+<ul>
+<li>Manufacturer code must have 2 leading digits with 3 trailing zeros and the item number is limited to 3 digits (000 to 999). Sixth digit is 0.</li>
+<li>Manufacturer code must have 3 leading digits ending with &quot;1&quot; and 2 trailing zeros. The item number is limited to 3 digits. Sixth digit is 1</li>
+<li>Manufacturer code must have 3 leading digits ending with &quot;2&quot; and 2 trailing zeros. The item number is limited to 3 digits. Sixth digit is 2</li>
+<li>Manufacturer code must have 3 leading digits and 2 trailing zeros. The item number is limited to 2 digits (00 to 99). Sixth digit is 3</li>
+<li>Manufacturer code must have 4 leading digits with 1 trailing zero and the item number is limited to 1 digit (0 to9). Sixth digit is 4</li>
+<li>Manufacturer code has all 5 digits. The item number is limited to a single digit consisting of either 5,6,7,8 or 9. Sixth digit is either 5,6,7,8 or 9</li>
+</ul></li>
+<li><strong>Check digit</strong>: The check digit is an additional digit, used to verify that the code has been entered correctly. Might be missing in fully-compressed code version (6-digits).</li>
+</ol>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$code </td>
+                                <td><p>the code to validate</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="http://www.gtin.info/upc/"><span class="namespace-wrapper">http://www.gtin.info/upc/</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_IsValidGSIN" name="method_IsValidGSIN" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">IsValidGSIN()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">IsValidGSIN(string  <span class="argument">$code = &#039;&#039;</span>) : boolean</pre>
+                <p><em>Determine whether a GSIN code is valid.</em></p>
+                <p>The Global Shipment Identification Number (GSIN) is a globally unique number which is used to identify a grouping of logistic units which are part of the same shipment.</p>
+<p>The logistic units keep the same GSIN during all transport stages, from origin to final destination. The GSIN identifies the logical grouping of one or several logistic units, each identified with a separate SSCC (Serial Shipping Container Code).</p>
+<p>GSIN also meets the requirements for UCR (Unique Consignment Reference) according to the World Customs Organisation, WCO.</p>
+<ol>
+<li><strong>GS1 Company Prefix</strong>: (6-9 digits) This prefix identifies the national <a href="http://www.gs1.org/">GS1</a> Member Organization to which the manufacturer is registered (not necessarily where the shipment occurs).</li>
+<li><strong>Sequence number</strong>: It is formed by 7-10 digits (depending on the length of the company prefix). It is recommended that to number shipments sequentially but it can be created in any sequence.</li>
+<li><strong>Check digit</strong>: The check digit is an additional digit, used to verify that the code has been entered correctly.</li>
+</ol>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$code </td>
+                                <td><p>the code to validate</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="http://www.gs1.se/en/our-standards/Identify/GSIN/"><span class="namespace-wrapper">http://www.gs1.se/en/our-standards/Identify/GSIN/</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_IsValidSSCC" name="method_IsValidSSCC" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">IsValidSSCC()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">IsValidSSCC(string  <span class="argument">$code = &#039;&#039;</span>) : boolean</pre>
+                <p><em>Determine whether a SSCC code is valid.</em></p>
+                <p>An SSCC (Serial Shipping Container Code) is used to provide a number logistic units. An SSCC enables manufacturers, suppliers, carriers and buyers to track a logistic unit from production to end customer. The can be used for tracing goods, warehouse management and efficient handling in transport.</p>
+<ol>
+<li><strong>A leading digit</strong>: (1 digit between 1-9) The leading digit is a number between 1 and 9. Previously only the digit 3 was used which means there can be logistic and transport-related systems that only permit the use of SSCCs which start with 3. Note that if an SSCC is created based on the company registration number, the leading digit must always be 3.</li>
+<li><strong>GS1 Company Prefix</strong>: (6-9 digits) This prefix identifies the national <a href="http://www.gs1.org/">GS1</a> Member Organization to which the manufacturer is registered (not necessarily where the shipment occurs).</li>
+<li><strong>Sequence number</strong>: It is formed by 7-10 digits (depending on the length of the company prefix). It is recommended that to number shipments sequentially but it can be created in any sequence.</li>
+<li><strong>Check digit</strong>: The check digit is an additional digit, used to verify that the code has been entered correctly.</li>
+</ol>
+<p>The same SSCC may not be used on two different logistic units, neither during transport or when they are handled in the warehouse of the transport buyer or goods recipient. This means that the life span of an SSCC, that is the period until the unit is unpacked or repacked, can be from a few to many years.</p>
+<p>The transport industry recommends that an SSCC should be available for re-use after 18 months, but only if it is certain that the SSCC is no longer in use. To estimate how many SSCCs your company needs you can, for example, use the number of logistic units handled in the most recent one or two year period.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$code </td>
+                                <td><p>the code to validate</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="http://www.gs1.se/en/our-standards/Identify/sscc/"><span class="namespace-wrapper">http://www.gs1.se/en/our-standards/Identify/sscc/</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_IsValidGLN" name="method_IsValidGLN" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">IsValidGLN()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">IsValidGLN(string  <span class="argument">$code = &#039;&#039;</span>) : boolean</pre>
+                <p><em>Determine whether a GLN code is valid</em></p>
+                <p>A GLN (Global Location Number) is used to uniquely identify a company or organisation.</p>
+<p>A GLN can also be used to number delivery places, invoicing addresses, workplaces, branches as well as functions or roles, such as goods recipient or authorised purchaser.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$code </td>
+                                <td><p>the code to validate</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://en.wikipedia.org/wiki/Global_Location_Number"><span class="namespace-wrapper">https://en.wikipedia.org/wiki/Global_Location_Number</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_IsValidIMEI" name="method_IsValidIMEI" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">IsValidIMEI()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">IsValidIMEI(string  <span class="argument">$code = &#039;&#039;</span>) : boolean</pre>
+                <p><em>Determine whether an IMEI number is valid or IMEISV</em></p>
+                <p>The International Mobile Equipment Identity (IMEI) is a number, to identify 3GPP (i.e., GSM, UMTS and LTE) and iDEN mobile phones, as well as some satellite phones.</p>
+<p>It is usually found printed inside the battery compartment of the phone, but can also be displayed on-screen on most phones by entering *#06# on the dialpad, or alongside other system information in the settings menu on smartphone operating systems.</p>
+<p>The IMEI (15 decimal digits: 14 digits plus a check digit) or IMEISV (16 digits) includes information on the origin, model, and serial number of the device.</p>
+<p>The structure of the IMEI/SV is specified in 3GPP TS 23.003. The model and origin comprise the initial 8-digit portion of the IMEI/SV, known as the Type Allocation Code (TAC). The remainder of the IMEI is manufacturer-defined, with a Luhn check digit at the end. The IMEISV drops the Luhn check digit in favor of an additional two digits for the Software Version Number (SVN)</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$code </td>
+                                <td><p>the code to validate</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://en.wikipedia.org/wiki/International_Mobile_Station_Equipment_Identity"><span class="namespace-wrapper">https://en.wikipedia.org/wiki/International_Mobile_Station_Equipment_Identity</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_calculateEANCheckDigit" name="method_calculateEANCheckDigit" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">calculateEANCheckDigit()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">calculateEANCheckDigit(string  <span class="argument">$code</span>) : integer</pre>
+                <p><em>Calculate a check digit using the Modulo-10 algorithm used for EAN/UPC/GTIN codes.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$code </td>
+                                <td><p>the code to calculate the check digit for</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://en.wikipedia.org/wiki/Check_digit"><span class="namespace-wrapper">https://en.wikipedia.org/wiki/Check_digit</span></a></dd>
+                                            <dd><a href="http://www.gs1.org/how-calculate-check-digit-manually"><span class="namespace-wrapper">http://www.gs1.org/how-calculate-check-digit-manually</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_validateEANCheckDigit" name="method_validateEANCheckDigit" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">validateEANCheckDigit()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">validateEANCheckDigit(string  <span class="argument">$code</span>, integer  <span class="argument">$length</span>) : boolean</pre>
+                <p><em>Determine whether a code is valid using the check-digit algorithm. It also validates whether the code has the right length and that it&#039;s composed of only digits.</em></p>
+                <p>A check digit is a form of redundancy check used for error detection on identification numbers, such as bank account numbers, which are used in an application where they will at least sometimes be input manually.</p>
+<p>It is analogous to a binary parity bit used to check for errors in computer-generated data. It consists of one or more digits computed by an algorithm from the other digits (or letters) in the sequence input.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$code </td>
+                                <td><p>the code to validate</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$length </td>
+                                <td><p>the code's length (e.g. 13 for EAN13, 12 for UPC-A, etc.)</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://en.wikipedia.org/wiki/Check_digit"><span class="namespace-wrapper">https://en.wikipedia.org/wiki/Check_digit</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_sumAllDigits" name="method_sumAllDigits" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">sumAllDigits()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">sumAllDigits(integer  <span class="argument">$number</span>, integer  <span class="argument">$index</span>) : array</pre>
+                <p><em>Replace a number by the sum of all its digits.</em></p>
+                <p>This funtion is used by <a href="../classes/CodeValidator.html#method_calculateLuhnCheckDigit">CodeValidator::calculateLuhnCheckDigit()</a> to add all the single digits of each number</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$number </td>
+                                <td><p>the number to get the sum of digits from</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$index </td>
+                                <td><p>the array index</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_calculateLuhnCheckDigit" name="method_calculateLuhnCheckDigit" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">calculateLuhnCheckDigit()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">calculateLuhnCheckDigit(string  <span class="argument">$code</span>) : integer</pre>
+                <p><em>Calculate a check digit using the Luhn Modulo-10 algorithm used for IMEI, Credit Card validation and others.</em></p>
+                <p>The check digit (x) is obtained by computing the sum of the rest of the digits then subtracting the units digit from 10. In algorithm form:</p>
+<ol>
+<li>Reverse the order of the digits in the number.</li>
+<li>Take the first, third, ... and every odd-positioned digit in the reversed digits and sum them to form the partial sum s1</li>
+<li>Multiply each digit by two and sum the digits of the result if the answer is greater than nine (e.g. 6 * 2 = 12 -&gt; 2 + 1 = 3) to form partial sums for the even digits</li>
+<li>Sum the second, fourth ... and every even-positioned digit in the reversed digits to form s2:</li>
+<li>Calculate the sum of s1 + s2</li>
+<li>Take the last digit from that sum. If the digit is 0, that's the check digit. If not, substrack the number from 10 to obtain the check digit.</li>
+</ol>
+<p>For instance</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Digits</th>
+<th style="text-align: center;">4</th>
+<th style="text-align: center;">9</th>
+<th style="text-align: center;">0</th>
+<th style="text-align: center;">1</th>
+<th style="text-align: center;">5</th>
+<th style="text-align: center;">4</th>
+<th style="text-align: center;">2</th>
+<th style="text-align: center;">0</th>
+<th style="text-align: center;">3</th>
+<th style="text-align: center;">2</th>
+<th style="text-align: center;">3</th>
+<th style="text-align: center;">7</th>
+<th style="text-align: center;">5</th>
+<th style="text-align: center;">1</th>
+<th style="text-align: center;"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Double every other</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">Sum all digits</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">+ (1+8)</td>
+<td style="text-align: center;">+ 0</td>
+<td style="text-align: center;">+ 2</td>
+<td style="text-align: center;">+ 5</td>
+<td style="text-align: center;">+ 8</td>
+<td style="text-align: center;">+ 2</td>
+<td style="text-align: center;">+ 0</td>
+<td style="text-align: center;">+ 3</td>
+<td style="text-align: center;">+ 4</td>
+<td style="text-align: center;">+ 3</td>
+<td style="text-align: center;">+ (1+4)</td>
+<td style="text-align: center;">+ 5</td>
+<td style="text-align: center;">+ 2</td>
+<td style="text-align: center;">= 52</td>
+</tr>
+</tbody>
+</table>
+<p>Check digit is: 10 - 2 = 8.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$code </td>
+                                <td><p>the code to calculate the Luhn check digit for</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://en.wikipedia.org/wiki/Luhn_algorithm"><span class="namespace-wrapper">https://en.wikipedia.org/wiki/Luhn_algorithm</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_validateLuhnCheckDigit" name="method_validateLuhnCheckDigit" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">validateLuhnCheckDigit()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">validateLuhnCheckDigit(string  <span class="argument">$code</span>, integer  <span class="argument">$length</span>) : boolean</pre>
+                <p><em>Determine whether a code is valid using the Luhn algorithm. It also validates whether the code has the right length and that it&#039;s composed of only digits.</em></p>
+                <p>The Luhn algorithm or Luhn formula, also known as the &quot;modulus 10&quot; or &quot;mod 10&quot; algorithm, is a simple checksum formula used to validate a variety of identification numbers, such as credit card numbers, IMEI numbers and National Provider Identifier numbers in US and Canadian Social Insurance Numbers.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$code </td>
+                                <td><p>the code to validate</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$length </td>
+                                <td><p>the code's length (e.g. 15 for IMEI numbers, 16 for credit cards, etc.)</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://en.wikipedia.org/wiki/Check_digit"><span class="namespace-wrapper">https://en.wikipedia.org/wiki/Check_digit</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_calculateISBNCheckDigit" name="method_calculateISBNCheckDigit" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">calculateISBNCheckDigit()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">calculateISBNCheckDigit(string  <span class="argument">$code</span>) : mixed</pre>
+                <p><em>Calculate a check digit using the ISBN algorithm. The ISBN is error-detecting, but not error-correcting (unless it is known that only a single digit is erroneous). The ISBN detects any single-digit error, as well as most two-digit error resulting from transposing two digits.</em></p>
+                <p>The ISBN (International Standard Book Number) is a unique numeric commercial book identifier. An ISBN is assigned to each edition and variation (except reprintings) of a book. For example, an e-book, a paperback and a hardcover edition of the same book would each have a different ISBN. ISBNs are 13 digits long if assigned on or after 1 January 2007, and 10 digits long if assigned before 2007. The method of assigning an ISBN is nation-based and varies from country to country, often depending on how large the publishing industry is within a country.</p>
+<p>The initial ISBN configuration of recognition was generated in 1967 based upon the 9-digit Standard Book Numbering (SBN) created in 1966. The 10-digit ISBN format was developed by the International Organization for Standardization (ISO) and was published in 1970 as international standard ISO 2108 (the SBN code can be converted to a ten digit ISBN by prefixing it with a zero). The last digit is a check digit which may be in the range 0-9 or X (where X is the Roman numeral for 10) for an ISBN-10, or 0-9 for an ISBN-13.</p>
+<p>For ISBN-10 each of the first nine digits of the ten-digit ISBN (excluding the check digit itself) is multiplied by a number in a sequence from 10 to 2 and the remainder of the sum with (respect to 11) is computed. The resulting remainder, plus the check digit, must equal a multiple of 11 (either 0 or 11).</p>
+<p>For ISBN-13 the check-digit is calculated using the <a href="../classes/CodeValidator.html#method_calculateEANCheckDigit">CodeValidator::calculateEANCheckDigit()</a> function, making it compatible with EAN codes.</p>
+<p>Therefore, the check digit is (11 minus the remainder of the sum of the products modulo 11) modulo 11. Taking the remainder modulo 11 a second time accounts for the possibility that the first remainder is 0 (without the second modulo operation the calculation could end up with 11-0 = 11 which is invalid).</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">ISBN</th>
+<th style="text-align: center;">1</th>
+<th style="text-align: center;">8</th>
+<th style="text-align: center;">4</th>
+<th style="text-align: center;">1</th>
+<th style="text-align: center;">4</th>
+<th style="text-align: center;">6</th>
+<th style="text-align: center;">2</th>
+<th style="text-align: center;">0</th>
+<th style="text-align: center;">1</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Weight</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">2</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: left;">Result</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">72</td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">24</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">2</td>
+<td>185</td>
+</tr>
+</tbody>
+</table>
+<p>Calculate (11 - (185 mod 11)) mod 11 = 2 which is the last digit from the original ISBN. Hence, the ISBN is valid.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$code </td>
+                                <td><p>The code to calculate the check digit for</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>(integer or X)</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://en.wikipedia.org/wiki/International_Standard_Book_Number"><span class="namespace-wrapper">https://en.wikipedia.org/wiki/International_Standard_Book_Number</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_validateISBNCheckDigit" name="method_validateISBNCheckDigit" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">validateISBNCheckDigit()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">validateISBNCheckDigit(string  <span class="argument">$code</span>, integer  <span class="argument">$length = 13</span>) : boolean</pre>
+                <p><em>Determine whether a code is valid using the ISBN algorithm (either ISBN 10 or 13 digits). It also validates whether the code has the right length.</em></p>
+                <p>For ISBN-10 each of the first nine digits of the ten-digit ISBN (excluding the check digit itself) is multiplied by a number in a sequence from 10 to 2 and the remainder of the sum with (respect to 11) is computed. The resulting remainder, plus the check digit, must equal a multiple of 11 (either 0 or 11). For ISBN-13 the check-digit is calculated using the <a href="../classes/CodeValidator.html#method_calculateEANCheckDigit">CodeValidator::calculateEANCheckDigit()</a> function, making it compatible with EAN codes.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$code </td>
+                                <td><p>the code to validate</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$length </td>
+                                <td><p>The length of the ISBN code to validate (either 10 or 13 digits)</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://en.wikipedia.org/wiki/International_Standard_Book_Number"><span class="namespace-wrapper">https://en.wikipedia.org/wiki/International_Standard_Book_Number</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">code-validator.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/code-validator.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                                                <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored  by <a target="_blank" href="https://imelgrat.me">Iv&aacute;n Melgrati</a> 
+                    on February 25th, 2018 at 03:25.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>
