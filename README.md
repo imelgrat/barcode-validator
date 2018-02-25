@@ -2,7 +2,7 @@ CodeValidator
 ==================
 
 [![License](https://poser.pugx.org/imelgrat/code-validator/license)](https://packagist.org/packages/imelgrat/code-validator)
-[![Latest Stable Version](https://poser.pugx.org/imelgrat/code-validator/v/stable)](https://packagist.org/packages/imelgrat/code-validator)
+[![Latest Stable Version](https://poser.pugx.org/imelgrat/freegoip/v/stable)](https://packagist.org/packages/imelgrat/freegoip)
 [![Total Downloads](https://poser.pugx.org/imelgrat/code-validator/downloads)](https://packagist.org/packages/imelgrat/code-validator)
 
 A PHP class for validating EAN, IMEI, ISBN, GTIN, SSCC, GSIN, UPC and other similar codes.
