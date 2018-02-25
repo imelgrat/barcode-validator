@@ -1,4 +1,5 @@
 <?php
+
 	/**
 	 * A PHP class for validating EAN, IMEI, ISBN, GTIN, SSCC, GSIN, UPC and other similar codes.
 	 *
@@ -15,7 +16,7 @@
 		 * @author    Ivan Melgrati
 		 * @copyright Copyright 2018 by Ivan Melgrati
 		 * @link      
-         * @license   https://github.com/imelgrat/CodeValidator/blob/master/LICENSE
+		 * @license   https://github.com//imelgrat/code-validator/blob/master/LICENSE
 		 * @version   v1.1.0 stable 
 		 */
 		class CodeValidator
@@ -64,7 +65,9 @@
 			 */
 			protected static function validateEANCheckDigit($code, $length)
 			{
-				// Check if the string length matches the code's desired length
+				// Remove hyphens
+                $code = str_replace('-','',$code);
+                // Check if the string length matches the code's desired length
 				if (strlen($code) == $length)
 				{
 					// If the string contains only digits
@@ -236,8 +239,8 @@
 			 */
 			protected static function validateISBNCheckDigit($code, $length = 13)
 			{
-				// Check if the string length matches the code's desired length
-				if (strlen($code) == $length)
+				// Check if the string length matches the code's desired length and contains only digits (after removing hyphens)
+                if (strlen($code) == $length && preg_match('/^[0-9]+$/', $code))
 				{
 					if (CodeValidator::calculateISBNCheckDigit(substr($code, 0, -1)) == substr($code, -1, 1))
 					{
@@ -251,6 +254,31 @@
 				else // The code has the wrong length, it's invalid
 				{
 					return false;
+				}
+			}
+
+			/**
+			 * Determine whether an ISBN code is valid (either ISBN 10 or 13 digits). It also validates whether the code has the right length.
+			 * 
+			 * For ISBN-10 each of the first nine digits of the ten-digit ISBN (excluding the check digit itself) is multiplied by a number in a sequence from 10 to 2 and the remainder of the sum with (respect to 11) is computed. 
+             * The resulting remainder, plus the check digit, must equal a multiple of 11 (either 0 or 11). 
+             * For ISBN-13 the check-digit is calculated using the {@link CodeValidator::validateEANCheckDigit()} function, making it compatible with EAN codes.
+			 * 
+			 * @link https://en.wikipedia.org/wiki/International_Standard_Book_Number
+			 * @param  string $code the code to validate
+			 * @return bool 
+			 */
+			public static function IsValidISBN($code = '')
+			{
+                // Remove hyphens
+                $code = str_replace('-','',$code);
+                if (strlen($code) == 13)
+				{
+					return CodeValidator::validateEANCheckDigit($code, 13);
+				}
+				else
+				{
+					return CodeValidator::validateISBNCheckDigit($code, 10);
 				}
 			}
 
@@ -274,6 +302,8 @@
 			 */
 			public static function IsValidEAN8($code = '')
 			{
+                // Remove hyphens
+                $code = str_replace('-','',$code);
 				return CodeValidator::validateEANCheckDigit($code, 8);
 			}
 
@@ -296,7 +326,9 @@
 			 */
 			public static function IsValidEAN13($code = '')
 			{
-				return CodeValidator::validateEANCheckDigit($code, 13);
+				// Remove hyphens
+                $code = str_replace('-','',$code);
+                return CodeValidator::validateEANCheckDigit($code, 13);
 			}
 
 			/**
@@ -316,7 +348,9 @@
 			 */
 			public static function IsValidEAN14($code = '')
 			{
-				return CodeValidator::validateEANCheckDigit($code, 14);
+				// Remove hyphens
+                $code = str_replace('-','',$code);
+                return CodeValidator::validateEANCheckDigit($code, 14);
 			}
 
 			/**
@@ -347,7 +381,9 @@
 			 */
 			public static function IsValidUPCA($code = '')
 			{
-				return CodeValidator::validateEANCheckDigit($code, 12);
+				// Remove hyphens
+                $code = str_replace('-','',$code);
+                return CodeValidator::validateEANCheckDigit($code, 12);
 			}
 
 			/**
@@ -373,7 +409,9 @@
 			 */
 			public static function IsValidUPCE($code = '')
 			{
-
+                // Remove hyphens
+                $code = str_replace('-','',$code);
+                
 				// If the string contains only digits
 				if (!preg_match('/^[0-9]+$/', $code))
 				{
@@ -461,7 +499,9 @@
 			 */
 			public static function IsValidGSIN($code = '')
 			{
-				return CodeValidator::validateEANCheckDigit($code, 17);
+				// Remove hyphens
+                $code = str_replace('-','',$code);
+                return CodeValidator::validateEANCheckDigit($code, 17);
 			}
 
 			/**
@@ -484,7 +524,9 @@
 			 */
 			public static function IsValidSSCC($code = '')
 			{
-				return CodeValidator::validateEANCheckDigit($code, 18);
+				// Remove hyphens
+                $code = str_replace('-','',$code);
+                return CodeValidator::validateEANCheckDigit($code, 18);
 			}
 
 			/**
@@ -500,7 +542,9 @@
 			 */
 			public static function IsValidGLN($code = '')
 			{
-				return CodeValidator::validateEANCheckDigit($code, 13);
+				// Remove hyphens
+                $code = str_replace('-','',$code);
+                return CodeValidator::validateEANCheckDigit($code, 13);
 			}
 
 			/**
@@ -520,7 +564,9 @@
 			 */
 			public static function IsValidIMEI($code = '')
 			{
-				if (preg_match('/^[0-9]+$/', $code))
+				// Remove hyphens
+                $code = str_replace('-','',$code);
+                if (preg_match('/^[0-9]+$/', $code))
 				{
 					switch (strlen($code))
 					{
@@ -540,4 +586,5 @@
 		}
 
 	}
+
 ?>
