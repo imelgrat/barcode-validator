@@ -1,7 +1,7 @@
 {
     "name": "imelgrat/code-validator",
     "type": "library",
-    "version" : "1.2.0",
+    "version" : "v1.1-stable",
     "description": "A PHP class for validating EAN, IMEI, ISBN, GTIN, SSCC, GSIN, UPC and other similar codes.",
     "keywords": ["IMEI", "IMEI code", "EAN", "UPC", "GTIN", "ISBN", "EAN code", "UPC code", "GTIN code", "ISBN code", "code validation"],
     "homepage": "https://github.com/imelgrat/code-validator",
