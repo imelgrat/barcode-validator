@@ -1,14 +1,14 @@
 <?php
 
 	/**
-	 * A PHP class for validating EAN, IMEI, ISBN, GTIN, SSCC, GSIN, UPC and other similar codes.
+	 * A PHP class for validating EAN, IMEI, ISBN, GTIN, SSCC, GSIN, UPC and other barcodes.
 	 *
-	 * @package CodeValidator
+	 * @package BarcodeValidator
 	 * @author    Ivan Melgrati
 	 * @version   v1.1.1 
 	 */
 
-	if (!class_exists('CodeValidator'))
+	if (!class_exists('BarcodeValidator'))
 	{
 		/**
 		 * A PHP class for validating EAN, IMEI, ISBN, GTIN, SSCC, GSIN, UPC and other similar codes.
@@ -16,13 +16,13 @@
 		 * @author    Ivan Melgrati
 		 * @copyright Copyright 2018 by Ivan Melgrati
 		 * @link      
-		 * @license   https://github.com/imelgrat/code-validator/blob/master/LICENSE
+		 * @license   https://github.com/imelgrat/barcode-validator/blob/master/LICENSE
 		 */
-		class CodeValidator
+		class BarcodeValidator
 		{
 			/**
 			 * Constructor. 
-			 * @return CodeValidator
+			 * @return BarcodeValidator
 			 */
 			public function __construct()
 			{
@@ -72,7 +72,7 @@
 					// If the string contains only digits
 					if (preg_match('/^[0-9]+$/', $code))
 					{
-						if (CodeValidator::calculateEANCheckDigit(substr($code, 0, -1)) == substr($code, -1, 1))
+						if (BarcodeValidator::calculateEANCheckDigit(substr($code, 0, -1)) == substr($code, -1, 1))
 						{
 							return true;
 						}
@@ -94,7 +94,7 @@
 			/**
 			 * Replace a number by the sum of all its digits.
 			 * 
-			 * This funtion is used by {@link CodeValidator::calculateLuhnCheckDigit()} to add all the single digits of each number
+			 * This funtion is used by {@link BarcodeValidator::calculateLuhnCheckDigit()} to add all the single digits of each number
 			 *
 			 * @param integer $number the number to get the sum of digits from
 			 * @param integer $index the array index
@@ -136,7 +136,7 @@
 				preg_match_all('/(\d)(\d){0,1}/', strrev($code), $digits);
 				$odd_digits = array_sum($digits[2]);
 
-				array_walk($digits[1], 'CodeValidator::sumAllDigits');
+				array_walk($digits[1], 'BarcodeValidator::sumAllDigits');
 				$even_digits = array_sum($digits[1]);
 
 				// Calculate check digit
@@ -163,7 +163,7 @@
 					// If the string contains only digits
 					if (preg_match('/^[0-9]+$/', $code))
 					{
-						if (CodeValidator::calculateLuhnCheckDigit(substr($code, 0, -1)) == substr($code, -1, 1))
+						if (BarcodeValidator::calculateLuhnCheckDigit(substr($code, 0, -1)) == substr($code, -1, 1))
 						{
 							return true;
 						}
@@ -192,7 +192,7 @@
 			 * 
 			 * For ISBN-10 each of the first nine digits of the ten-digit ISBN (excluding the check digit itself) is multiplied by a number in a sequence from 10 to 2 and the remainder of the sum with (respect to 11) is computed. The resulting remainder, plus the check digit, must equal a multiple of 11 (either 0 or 11).
 			 * 
-			 * For ISBN-13 the check-digit is calculated using the {@link CodeValidator::calculateEANCheckDigit()} function, making it compatible with EAN codes. 
+			 * For ISBN-13 the check-digit is calculated using the {@link BarcodeValidator::calculateEANCheckDigit()} function, making it compatible with EAN codes. 
 			 * 
 			 * Therefore, the check digit is (11 minus the remainder of the sum of the products modulo 11) modulo 11. Taking the remainder modulo 11 a second time accounts for the possibility that the first remainder is 0 (without the second modulo operation the calculation could end up with 11-0 = 11 which is invalid).
 			 * 
@@ -211,7 +211,7 @@
 			{
 				if (strlen($code) == 13)
 				{
-					$checkdigit = CodeValidator::calculateEANCheckDigit($code);
+					$checkdigit = BarcodeValidator::calculateEANCheckDigit($code);
 				}
 				else
 				{
@@ -240,7 +240,7 @@
 				// Check if the string length matches the code's desired length and contains only digits (after removing hyphens)
                 if (strlen($code) == 10 && preg_match('/^[0-9]+$/', $code))
 				{
-					if (CodeValidator::calculateISBNCheckDigit(substr($code, 0, -1)) == substr($code, -1, 1))
+					if (BarcodeValidator::calculateISBNCheckDigit(substr($code, 0, -1)) == substr($code, -1, 1))
 					{
 						return true;
 					}
@@ -260,7 +260,7 @@
 			 * 
 			 * For ISBN-10 each of the first nine digits of the ten-digit ISBN (excluding the check digit itself) is multiplied by a number in a sequence from 10 to 2 and the remainder of the sum with (respect to 11) is computed. 
              * The resulting remainder, plus the check digit, must equal a multiple of 11 (either 0 or 11). 
-             * For ISBN-13 the check-digit is calculated using the {@link CodeValidator::validateEANCheckDigit()} function, making it compatible with EAN codes.
+             * For ISBN-13 the check-digit is calculated using the {@link BarcodeValidator::validateEANCheckDigit()} function, making it compatible with EAN codes.
 			 * 
 			 * @link https://en.wikipedia.org/wiki/International_Standard_Book_Number
 			 * @param  string $code the code to validate
@@ -272,11 +272,11 @@
                 $code = str_replace('-','',$code);
                 if (strlen($code) == 13)
 				{
-					return CodeValidator::validateEANCheckDigit($code, 13);
+					return BarcodeValidator::validateEANCheckDigit($code, 13);
 				}
 				else
 				{
-					return CodeValidator::validateISBNCheckDigit($code, 10);
+					return BarcodeValidator::validateISBNCheckDigit($code, 10);
 				}
 			}
 
@@ -302,7 +302,7 @@
 			{
                 // Remove hyphens
                 $code = str_replace('-','',$code);
-				return CodeValidator::validateEANCheckDigit($code, 8);
+				return BarcodeValidator::validateEANCheckDigit($code, 8);
 			}
 
 			/**
@@ -326,7 +326,7 @@
 			{
 				// Remove hyphens
                 $code = str_replace('-','',$code);
-                return CodeValidator::validateEANCheckDigit($code, 13);
+                return BarcodeValidator::validateEANCheckDigit($code, 13);
 			}
 
 			/**
@@ -348,7 +348,7 @@
 			{
 				// Remove hyphens
                 $code = str_replace('-','',$code);
-                return CodeValidator::validateEANCheckDigit($code, 14);
+                return BarcodeValidator::validateEANCheckDigit($code, 14);
 			}
 
 			/**
@@ -381,7 +381,7 @@
 			{
 				// Remove hyphens
                 $code = str_replace('-','',$code);
-                return CodeValidator::validateEANCheckDigit($code, 12);
+                return BarcodeValidator::validateEANCheckDigit($code, 12);
 			}
 
 			/**
@@ -475,7 +475,7 @@
 
 				} //End Select
 
-				return CodeValidator::validateEANCheckDigit("0" . $ManufacturerNumber . $ItemNumber . $check_code, 12);
+				return BarcodeValidator::validateEANCheckDigit("0" . $ManufacturerNumber . $ItemNumber . $check_code, 12);
 			}
 
 			/**
@@ -499,7 +499,7 @@
 			{
 				// Remove hyphens
                 $code = str_replace('-','',$code);
-                return CodeValidator::validateEANCheckDigit($code, 17);
+                return BarcodeValidator::validateEANCheckDigit($code, 17);
 			}
 
 			/**
@@ -524,7 +524,7 @@
 			{
 				// Remove hyphens
                 $code = str_replace('-','',$code);
-                return CodeValidator::validateEANCheckDigit($code, 18);
+                return BarcodeValidator::validateEANCheckDigit($code, 18);
 			}
 
 			/**
@@ -542,7 +542,7 @@
 			{
 				// Remove hyphens
                 $code = str_replace('-','',$code);
-                return CodeValidator::validateEANCheckDigit($code, 13);
+                return BarcodeValidator::validateEANCheckDigit($code, 13);
 			}
 
 			/**
@@ -572,7 +572,7 @@
 							return true;
 							break;
 						case 15: // IMEI number with check digit. Test check digit
-							return CodeValidator::validateLuhnCheckDigit($code, 15);
+							return BarcodeValidator::validateLuhnCheckDigit($code, 15);
 							break;
 						case 16: // It's a IMEISV code (IMEI Software Version). No check digit
 							return true;

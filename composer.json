@@ -1,10 +1,10 @@
 {
-    "name": "imelgrat/code-validator",
+    "name": "imelgrat/barcode-validator",
     "type": "library",
     "version" : "v1.1.1",
-    "description": "A PHP class for validating EAN, IMEI, ISBN, GTIN, SSCC, GSIN, UPC and other similar codes.",
+    "description": "A PHP class for validating EAN, IMEI, ISBN, GTIN, SSCC, GSIN, UPC and other barcodes.",
     "keywords": ["IMEI", "IMEI code", "EAN", "UPC", "GTIN", "ISBN", "EAN code", "UPC code", "GTIN code", "ISBN code", "code validation"],
-    "homepage": "https://github.com/imelgrat/code-validator",
+    "homepage": "https://github.com/imelgrat/barcode-validator",
     "license": "MIT",
     "authors": [
         {

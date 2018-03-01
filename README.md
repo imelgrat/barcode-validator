@@ -1,11 +1,11 @@
-CodeValidator
+BarcodeValidator
 ==================
 
-[![GitHub license](https://img.shields.io/github/license/imelgrat/code-validator.svg?style=flat-square)](https://github.com/imelgrat/code-validator/blob/master/LICENSE)
-[![GitHub release](https://img.shields.io/github/release/imelgrat/code-validator.svg?style=flat-square)](https://github.com/imelgrat/code-validator/releases)
-[![Total Downloads](https://poser.pugx.org/imelgrat/code-validator/downloads)](https://packagist.org/packages/imelgrat/code-validator)
-[![GitHub issues](https://img.shields.io/github/issues/imelgrat/code-validator.svg?style=flat-square)](https://github.com/imelgrat/code-validator/issues)
-[![GitHub stars](https://img.shields.io/github/stars/imelgrat/code-validator.svg?style=flat-square)](https://github.com/imelgrat/code-validator/stargazers)
+[![GitHub license](https://img.shields.io/github/license/imelgrat/barcode-validator.svg?style=flat-square)](https://github.com/imelgrat/barcode-validator/blob/master/LICENSE)
+[![GitHub release](https://img.shields.io/github/release/imelgrat/barcode-validator.svg?style=flat-square)](https://github.com/imelgrat/barcode-validator/releases)
+[![Total Downloads](https://poser.pugx.org/imelgrat/barcode-validator/downloads)](https://packagist.org/packages/imelgrat/barcode-validator)
+[![GitHub issues](https://img.shields.io/github/issues/imelgrat/barcode-validator.svg?style=flat-square)](https://github.com/imelgrat/barcode-validator/issues)
+[![GitHub stars](https://img.shields.io/github/stars/imelgrat/barcode-validator.svg?style=flat-square)](https://github.com/imelgrat/barcode-validator/stargazers)
 
 A PHP class for validating EAN, IMEI, ISBN, GTIN, SSCC, GSIN, UPC and other similar codes.
 
@@ -23,24 +23,24 @@ Installation
 
 The recommended installation method is through
 [Composer](http://getcomposer.org/), a dependency manager for PHP. Just add
-`imelgrat/code-validator` to your project's `composer.json` file:
+`imelgrat/barcode-validator` to your project's `composer.json` file:
 
 ```json
 {
     "require": {
-        "imelgrat/code-validator": "*"
+        "imelgrat/barcode-validator": "*"
     }
 }
 ```
 
-[More details](http://packagist.org/packages/imelgrat/code-validator) can
+[More details](http://packagist.org/packages/imelgrat/barcode-validator) can
 be found over at [Packagist](http://packagist.org).
 
 ### Manually
 
-1.  Copy `src/code-validator.php` to your codebase, perhaps to the `vendor`
+1.  Copy `src/barcode-validator.php` to your codebase, perhaps to the `vendor`
     directory.
-2.  Add the `CodeValidator` class to your autoloader or `require` the file
+2.  Add the `BarcodeValidator` class to your autoloader or `require` the file
     directly.
 
 Feedback
