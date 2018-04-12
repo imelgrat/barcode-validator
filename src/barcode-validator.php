@@ -5,7 +5,7 @@
 	 *
 	 * @package BarcodeValidator
 	 * @author    Ivan Melgrati
-	 * @version   v1.1.1 
+	 * @version   v1.1.2 
 	 */
 
 	if (!class_exists('BarcodeValidator'))
