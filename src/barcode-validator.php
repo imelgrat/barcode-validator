@@ -41,13 +41,18 @@
 			{
 				// Split odd-/even-positioned digits (except the last one).
 				preg_match_all('/(\d)(\d){0,1}/', $code, $digits);
-				$odd_digits = array_sum($digits[1]);
-				$even_digits = array_sum($digits[2]);
-
-				// Calculate check digit
-				$checkdigit = (10 - (($odd_digits * 3 + $even_digits) % 10) % 10);
-
-				return $checkdigit;
+				$oddDigits = array_sum($digits[1]);
+				$evenDigits = array_sum($digits[2]);
+				if (strlen($code) % 2 == 0) {
+					$evenDigits *= 3;
+				} else {
+					$oddDigits *= 3;
+				}
+				$sum = $oddDigits + $evenDigits;
+				// nearest equal or higher multiple of ten
+				$multiple = ceil($sum / 10) * 10;
+				$checkDigit = $multiple - $sum;
+				return $checkDigit;
 			}
 
 			/**
