@@ -546,6 +546,8 @@ if (!class_exists('BarcodeValidator')) {
 					case 16: // It's a IMEISV code (IMEI Software Version). No check digit
 						return true;
 						break;
+					default:
+						return false;
 				}
 			}
 		}
