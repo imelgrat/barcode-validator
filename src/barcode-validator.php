@@ -551,5 +551,26 @@ if (!class_exists('BarcodeValidator')) {
 				}
 			}
 		}
+
+        /**
+         * Determine whether code is valid ASIN
+         *
+         * Amazon Standard Identification Number (ASIN), is a ten-digit alphanumeric code that identifies products on Amazon. It's unique for each product and is assigned when you create a new product in Amazon's catalog.
+         *
+         * @link https://en.wikipedia.org/wiki/Amazon_Standard_Identification_Number
+         *
+         * @param  string $code the code to validate
+         *
+         * @return bool
+         */
+        public static function IsValidASIN($code = '')
+        {
+            if (preg_match('/^B\d{2}\w{7}|\d{9}(X|\d)$/', $code)) {
+                if(strlen($code) == 10)
+                    return true;
+                }
+
+            return false;
+        }
 	}
 }
