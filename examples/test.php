@@ -10,4 +10,7 @@
 	
 	$code = '9780596100674';
 	echo 'Is ISBN "'.$code.'" valid? '. (BarcodeValidator::IsValidISBN($code) ? 'true' : 'false'). '<br>';
+
+    $code = 'B0833N1385';
+    echo 'Is ASIN "'.$code.'" valid? '. (BarcodeValidator::IsValidASIN($code) ? 'true' : 'false'). '<br>';
 ?>
