@@ -47,3 +47,6 @@ Temporary Items
 .apdisk
 phpdoc-cache-2e
 phpdoc-cache-8b
+
+# phpstorm
+.idea
