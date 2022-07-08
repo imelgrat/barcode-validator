@@ -3,7 +3,7 @@
 	 * @author Ivan Melgrati
 	 * @copyright 2018
 	 */
-	require_once ('../src/barcode-validator.php');
+	require_once ('../src/BarcodeValidator.php');
 
 	$code = '490154203237518';
 	echo 'Is IMEI code "'.$code.'" valid? '. (BarcodeValidator::IsValidIMEI($code) ? 'true' : 'false'). '<br>';

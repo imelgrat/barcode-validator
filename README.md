@@ -38,7 +38,7 @@ be found over at [Packagist](http://packagist.org).
 
 ### Manually
 
-1.  Copy `src/barcode-validator.php` to your codebase, perhaps to the `vendor`
+1.  Copy `src/BarcodeValidator.php` to your codebase, perhaps to the `vendor`
     directory.
 2.  Add the `BarcodeValidator` class to your autoloader or `require` the file
     directly.

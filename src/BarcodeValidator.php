@@ -15,7 +15,7 @@ if (!class_exists('BarcodeValidator')) {
 	 * @author    Ivan Melgrati
 	 * @copyright Copyright 2018 by Ivan Melgrati
 	 * @link      
-	 * @license   https://github.com/imelgrat/barcode-validator/blob/master/LICENSE
+	 * @license   https://github.com/imelgrat/BarcodeValidator/blob/master/LICENSE
 	 */
 	class BarcodeValidator
 	{
